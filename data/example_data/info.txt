@@ -1,0 +1,1 @@
+This directory is auto-generated and used by the extractAnnotations.py script to store exported annotation data as json file.

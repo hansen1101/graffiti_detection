@@ -1,0 +1,17 @@
+Plotted detections (created by the commands below) are stored in this directory.
+
+
+python eval_model.py \
+	--model_dir=models/tensorflow_models/ssd_inception_v2_training_2/ \
+	--input_data_dir=data/images/detection_test/ \
+	--iou_boundary=0.4 \
+	--confidence_threshold=0.3 \
+	--detection_only \
+	--tensorflow_model
+
+python eval_model.py \
+	--model_dir=models/keras_models/Lfm_SeparatedParams_drop_0.5/ \
+	--input_data_dir=data/images/detection_test/ \
+	--iou_boundary=0.4 \
+	--confidence_threshold=0.3 \
+	--detection_only

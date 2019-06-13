@@ -1,0 +1,26 @@
+<annotation>
+	<folder>testdata</folder>
+	<filename>100388421.jpg</filename>
+	<path>/usr/local/share/data/graffiti_images/examples/images_and_annotations/datasource_1/100388421.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>375</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>graffiti</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>79</xmin>
+			<ymin>1</ymin>
+			<xmax>383</xmax>
+			<ymax>375</ymax>
+		</bndbox>
+	</object>
+</annotation>

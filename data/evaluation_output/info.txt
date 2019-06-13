@@ -1,0 +1,9 @@
+If model evaluation is run with output_flag, the detections are plotted into this directory.
+
+python eval_model.py \
+	--model_dir=models/keras_models/Lfm_SeparatedParams_drop_0.5/ \
+	--input_data_dir=data/trainings/graffiti_ba_training/annotations/test \
+	--iou_boundary=0.5 \
+	--confidence_threshold=0.3 \
+	--preprocess_on_init \
+	--output_flag

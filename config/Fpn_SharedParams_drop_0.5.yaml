@@ -1,0 +1,134 @@
+base: InceptionV3
+base_model_ckpt: weights_init_imagenet.hdf5
+base_output_layer: mixed10
+classification_config:
+  batch_size: 4
+  classification_training:
+  - callbacks:
+      ModelCheckpoint: {filepath: 'weights__epoch={epoch:02d}__val_loss={val_loss:.2f}.hdf5',
+        mode: auto, monitor: val_loss, period: 10, save_best_only: false, save_weights_only: true,
+        verbose: 1}
+      ReduceLROnPlateau: {cooldown: 7, factor: 0.25, min_lr: 2.5e-05, mode: auto,
+        monitor: val_loss, patience: 10, verbose: 1}
+      TensorBoard: {batch_size: 4, log_dir: logs, write_graph: false, write_images: true}
+    enabled: true
+    epochs: 50
+    fine_tuning_layer: mixed10
+    freeze_to_bottleneck: true
+    optimizer:
+      SGD: {decay: 0.005, lr: 0.02, momentum: 0.6, nesterov: false}
+  - callbacks:
+      ModelCheckpoint: {filepath: 'weights__epoch={epoch:02d}__val_loss={val_loss:.2f}.hdf5',
+        mode: auto, monitor: val_loss, period: 10, save_best_only: false, save_weights_only: true,
+        verbose: 1}
+      ReduceLROnPlateau: {cooldown: 10, factor: 0.25, min_lr: 2.5e-05, mode: auto,
+        monitor: val_loss, patience: 10, verbose: 1}
+      TensorBoard: {batch_size: 4, log_dir: logs, write_graph: false, write_images: true}
+    enabled: true
+    epochs: 350
+    fine_tuning_layer: mixed6
+    freeze_to_bottleneck: false
+    optimizer:
+      SGD: {decay: 0.0001, lr: 0.0002, momentum: 0.9, nesterov: false}
+  data: {train_items_path: images/graffitiClassification/train, val_items_path: images/graffitiClassification/test}
+  enabled: false
+  head_layers:
+    averagePooling2D: 0
+    conv2d:
+    - !!python/tuple
+      - 256
+      - 1
+      - 1
+      - valid
+      - relu
+      - {alpha: 0.15}
+    - !!python/tuple
+      - 256
+      - 3
+      - 2
+      - valid
+      - relu
+      - {alpha: 0.15}
+      - {name: bottleneck_feats, padding: 1}
+    dense:
+    - !!python/tuple
+      - 256
+      - relu
+      - {alpha: 0.15}
+    - !!python/tuple
+      - 128
+      - relu
+      - {alpha: 0.15}
+    - !!python/tuple [1, sigmoid]
+    dropout: [0.5, 0.5, 0.0]
+    maxPooling2D: 0
+  loss: binary_crossentropy
+  metrics: [accuracy]
+  validation_split: 0.3
+  weight_checkpoint_file: weights_init_imagenet.hdf5
+detection_config:
+  alpha: [0.5, 1.0, 1.5, 2.0, 2.5]
+  aspect_ratios: [1.0, 2.0, 3.0, 0.5, 0.3333333333333333]
+  batch_size: 8
+  data_path: data/trainings/graffiti_ba_training/annotations
+  default_kernel_size: 3
+  enabled: true
+  feature_map_filter_sizes: 512
+  feature_pyramid_network: true
+  fpn_filter_sizes: 256
+  loss: [combined_loss]
+  max_anchor_limit: 0.98
+  max_scale: 0.9
+  min_kernel_size: 3
+  min_scale: 0.1
+  neg_iou_assign_threshold: 0.4
+  parameter_sharing: true
+  pos_iou_assign_threshold: 0.6
+  sigma: 2.0
+  similarity_func: jaccard_similarity
+  spatial_drop_out_rate: 0.5
+  subdir_name: Fpn_SharedParams
+  test_dir_pattern: test
+  train_test_split: true
+  trainings:
+  - callbacks:
+      ModelCheckpoint: {filepath: '0_weights__epoch={epoch:02d}__loss={loss:.2f}__val_loss={val_loss:.2f}.hdf5',
+        mode: auto, monitor: val_loss, period: 15, save_best_only: true, save_weights_only: true,
+        verbose: 1}
+      ReduceLROnPlateau: {cooldown: 20, factor: 0.5, min_lr: 2.5e-05, mode: auto,
+        monitor: val_loss, patience: 15, verbose: 1}
+      TensorBoard: {batch_size: 4, log_dir: logs, write_graph: false, write_images: true}
+    enabled: true
+    epochs: 50
+    freeze_to_bottleneck: true
+    optimizer:
+      SGD: {decay: 0.0005, lr: 0.004, momentum: 0.4, nesterov: false}
+  - callbacks:
+      ModelCheckpoint: {filepath: '1_weights__epoch={epoch:02d}__loss={loss:.2f}__val_loss={val_loss:.2f}.hdf5',
+        mode: auto, monitor: val_loss, period: 2, save_best_only: true, save_weights_only: true,
+        verbose: 1}
+      ReduceLROnPlateau: {cooldown: 15, factor: 0.5, min_lr: 2.5e-05, mode: auto,
+        monitor: val_loss, patience: 10, verbose: 1}
+      TensorBoard: {batch_size: 4, log_dir: logs, write_graph: false, write_images: true}
+    enabled: true
+    epochs: 40
+    fine_tuning_layer: mixed7
+    freeze_to_bottleneck: false
+    optimizer:
+      SGD: {decay: 0.0001, lr: 0.002, momentum: 0.9, nesterov: false}
+  - callbacks:
+      ModelCheckpoint: {filepath: '2_weights__epoch={epoch:02d}__loss={loss:.2f}__val_loss={val_loss:.2f}.hdf5',
+        mode: auto, monitor: val_loss, period: 2, save_best_only: true, save_weights_only: true,
+        verbose: 1}
+      ReduceLROnPlateau: {cooldown: 15, factor: 0.5, min_lr: 2.5e-05, mode: auto,
+        monitor: val_loss, patience: 10, verbose: 1}
+      TensorBoard: {batch_size: 4, log_dir: logs, write_graph: false, write_images: true}
+    enabled: true
+    epochs: 50
+    fine_tuning_layer: input_1
+    freeze_to_bottleneck: false
+    optimizer:
+      SGD: {decay: 0.0001, lr: 0.001, momentum: 0.9, nesterov: false}
+  weight_checkpoint_file: weights_init_classification_00.hdf5
+feature_map_layers: [mixed7, mixed10]1
+input_shape: !!python/tuple [460, 460, 3]

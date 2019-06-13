@@ -1,0 +1,17 @@
+models/tensorflow_models/ssd_inception_v2_training_2/ckpt-64000/frozen_inference_graph.pb
+downrate out off bounds predictions	[False]
+TP label @IoU	[0.5]
+---------------------------------
+[79%]	mAP (only at recall change points)
+[74%]	mAP (PVOC/COCO metrics)
+[61%]	mAP (over all predictions until recall=1)
+[89%]	mAP TP coverage of GT
+---------------------------------
+[524]	custom #TP before 1st FP
+[1124]	custom #GT
+[47%]	custom TP coverage of GT
+[69%]	custom avg. TP confidence
+[79%]	custom avg. TP/GT IoU
+=================================
+
+

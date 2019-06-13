@@ -1,0 +1,85 @@
+models/keras_models/Lfm_SeparatedParams_drop_0.5/combined_loss_alpha=1.00__weights_final__epoch=140__val_loss=9.15.hdf5
+downrate out off bounds predictions	[False]
+TP label @IoU	[0.5]
+---------------------------------
+[57%]	mAP (only at recall change points)
+[58%]	mAP (PVOC/COCO metrics)
+[43%]	mAP (over all predictions until recall=1)
+[97%]	mAP TP coverage of GT
+---------------------------------
+[355]	custom #TP before 1st FP
+[1124]	custom #GT
+[32%]	custom TP coverage of GT
+[44%]	custom avg. TP confidence
+[69%]	custom avg. TP/GT IoU
+=================================
+
+
+models/keras_models/Lfm_SeparatedParams_drop_0.5/combined_loss_alpha=1.50__weights_final__epoch=140__val_loss=12.96.hdf5
+downrate out off bounds predictions	[False]
+TP label @IoU	[0.5]
+---------------------------------
+[60%]	mAP (only at recall change points)
+[61%]	mAP (PVOC/COCO metrics)
+[45%]	mAP (over all predictions until recall=1)
+[97%]	mAP TP coverage of GT
+---------------------------------
+[395]	custom #TP before 1st FP
+[1124]	custom #GT
+[35%]	custom TP coverage of GT
+[53%]	custom avg. TP confidence
+[70%]	custom avg. TP/GT IoU
+=================================
+
+
+models/keras_models/Lfm_SeparatedParams_drop_0.5/combined_loss_alpha=0.50__weights_final__epoch=140__val_loss=4.67.hdf5
+downrate out off bounds predictions	[False]
+TP label @IoU	[0.5]
+---------------------------------
+[53%]	mAP (only at recall change points)
+[53%]	mAP (PVOC/COCO metrics)
+[39%]	mAP (over all predictions until recall=1)
+[97%]	mAP TP coverage of GT
+---------------------------------
+[306]	custom #TP before 1st FP
+[1124]	custom #GT
+[27%]	custom TP coverage of GT
+[40%]	custom avg. TP confidence
+[70%]	custom avg. TP/GT IoU
+=================================
+
+
+models/keras_models/Lfm_SeparatedParams_drop_0.5/combined_loss_alpha=2.50__weights_final__epoch=140__val_loss=21.02.hdf5
+downrate out off bounds predictions	[False]
+TP label @IoU	[0.5]
+---------------------------------
+[62%]	mAP (only at recall change points)
+[63%]	mAP (PVOC/COCO metrics)
+[47%]	mAP (over all predictions until recall=1)
+[97%]	mAP TP coverage of GT
+---------------------------------
+[414]	custom #TP before 1st FP
+[1124]	custom #GT
+[37%]	custom TP coverage of GT
+[64%]	custom avg. TP confidence
+[72%]	custom avg. TP/GT IoU
+=================================
+
+
+models/keras_models/Lfm_SeparatedParams_drop_0.5/combined_loss_alpha=2.00__weights_final__epoch=140__val_loss=16.70.hdf5
+downrate out off bounds predictions	[False]
+TP label @IoU	[0.5]
+---------------------------------
+[61%]	mAP (only at recall change points)
+[61%]	mAP (PVOC/COCO metrics)
+[46%]	mAP (over all predictions until recall=1)
+[97%]	mAP TP coverage of GT
+---------------------------------
+[405]	custom #TP before 1st FP
+[1124]	custom #GT
+[36%]	custom TP coverage of GT
+[59%]	custom avg. TP confidence
+[71%]	custom avg. TP/GT IoU
+=================================
+
+
